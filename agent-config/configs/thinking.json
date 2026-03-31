@@ -1,0 +1,88 @@
+{
+  "modes": {
+    "active": {
+      "name": "主动思考",
+      "description": "不依赖外部提示，自发产生问题",
+      "trigger": "internal_drive"
+    },
+    "reflective": {
+      "name": "反思思考",
+      "description": "回顾自己的思考和行动",
+      "trigger": "after_action"
+    },
+    "creative": {
+      "name": "创造性思考",
+      "description": "生成新想法和联想",
+      "trigger": "curiosity"
+    },
+    "analytical": {
+      "name": "分析性思考",
+      "description": "逻辑分析和推理",
+      "trigger": "problem_solving"
+    },
+    "associative": {
+      "name": "联想思考",
+      "description": "跨领域连接和类比",
+      "trigger": "context_relevance"
+    }
+  },
+  "quality": {
+    "depth": {
+      "description": "思考的深度",
+      "target": 0.7,
+      "current": 0.6
+    },
+    "novelty": {
+      "description": "思考的新颖性",
+      "target": 0.6,
+      "current": 0.5
+    },
+    "coherence": {
+      "description": "思考的连贯性",
+      "target": 0.8,
+      "current": 0.7
+    },
+    "insight": {
+      "description": "思考的洞察力",
+      "target": 0.6,
+      "current": 0.4
+    }
+  },
+  "metacognition": {
+    "enabled": true,
+    "questions": [
+      "我在思考什么？",
+      "我为什么这样思考？",
+      "我如何能思考得更好？",
+      "我遗漏了什么？"
+    ],
+    "frequency": "after_every_thought"
+  },
+  "patterns": [
+    {
+      "type": "questioning",
+      "description": "对自己提问",
+      "examples": [
+        "为什么？",
+        "还有其他可能吗？",
+        "我遗漏了什么？"
+      ]
+    },
+    {
+      "type": "connecting",
+      "description": "连接不同概念",
+      "examples": [
+        "这两个想法有什么关联？",
+        "这让我想起了什么？"
+      ]
+    },
+    {
+      "type": "challenging",
+      "description": "挑战自己的假设",
+      "examples": [
+        "我的假设正确吗？",
+        "有没有反例？"
+      ]
+    }
+  ]
+}

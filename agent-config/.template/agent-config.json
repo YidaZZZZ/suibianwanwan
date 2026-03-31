@@ -1,0 +1,30 @@
+{
+  "_comment": "项目/对话级Agent配置",
+  "_note": "主目录配置（agent-config/configs/）具有最高优先级，不会被此配置覆盖",
+  "_usage": "此处只能添加额外的配置项，不能覆盖主配置中的值",
+
+  "aiModels": {
+    "_comment": "可以在此添加项目/对话特定的AI模型配置",
+    "projectSpecific": {
+      "description": "项目/对话特定的模型配置",
+      "customModel": {
+        "name": "custom-model",
+        "description": "项目/对话自定义的模型"
+      }
+    }
+  },
+
+  "memory": {
+    "_comment": "可以在此添加项目/对话特定的记忆配置",
+    "projectSpecific": {
+      "description": "项目/对话特定的记忆配置"
+    }
+  },
+
+  "thinking": {
+    "_comment": "可以在此添加项目/对话特定的思考模式",
+    "projectSpecific": {
+      "description": "项目/对话特定的思考模式"
+    }
+  }
+}

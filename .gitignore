@@ -1,0 +1,51 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Temp
+*.tmp
+*.temp
+.cache/
+
+# Agent configs (optional - uncomment if you want to ignore project-specific configs)
+# agent-config.json
+
+# Conversations (optional - uncomment if you want to ignore conversation logs)
+# conversations/
+
+# Chat logs
+logs/chats/*.txt
+logs/chats/*.log
+logs/chats/important/*

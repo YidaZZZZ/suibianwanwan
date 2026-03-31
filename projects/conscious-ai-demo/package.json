@@ -1,0 +1,14 @@
+{
+  "name": "conscious-ai-demo",
+  "version": "1.0.0",
+  "description": "A demo framework simulating AI consciousness with long-term memory and active thinking",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "@xenova/transformers": "^2.16.0"
+  }
+}

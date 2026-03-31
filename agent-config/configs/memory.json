@@ -1,0 +1,42 @@
+{
+  "system": {
+    "shortTerm": {
+      "capacity": 7,
+      "retention": "30min",
+      "clearOnNewSession": false
+    },
+    "longTerm": {
+      "consolidation": "daily",
+      "persistence": true,
+      "maxEpisodes": 1000,
+      "cleanupInterval": "weekly"
+    },
+    "episodic": {
+      "minSignificance": 0.5,
+      "autoConsolidate": true,
+      "themeExtraction": true
+    }
+  },
+  "forgetting": {
+    "enabled": true,
+    "curve": "exponential",
+    "halfLife": "7d",
+    "minRetention": 0.1
+  },
+  "types": {
+    "semantic": {
+      "description": "事实和概念知识",
+      "persistence": true
+    },
+    "episodic": {
+      "description": "具体经历和事件",
+      "persistence": true,
+      "consolidateAfter": "24h"
+    },
+    "procedural": {
+      "description": "技能和习惯",
+      "persistence": true,
+      "requiresPractice": true
+    }
+  }
+}
