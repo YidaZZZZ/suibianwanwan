@@ -1,4 +1,5 @@
 """测试agent_service的各个接口"""
+# type: ignore[import-not-found]
 import requests
 import sys
 
