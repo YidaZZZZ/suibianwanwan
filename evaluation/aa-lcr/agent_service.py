@@ -3,10 +3,11 @@ Agent服务封装
 为AA-LCR评测提供HTTP API接口
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import time
 import sys
 import os
+import random
 
 # 添加agent-config到路径
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../agent-config'))
@@ -15,27 +16,26 @@ app = Flask(__name__)
 
 class MockAgent:
     """模拟Agent，实际使用时替换为真实的Agent实现"""
-    
-    def __init__(self):
-        self.config = {
+
+    def __init__(self) -> None:
+        self.config: dict[str, str | int | bool] = {
             'use_logic_engine': True,
             'timeout': 300,
             'max_retries': 3
         }
-    
-    def process_with_logic(self, documents, question):
+
+    def process_with_logic(self, documents: list[str], question: str) -> dict[str, str | float | dict[str, int]]:
         """处理带逻辑推理的查询"""
         start_time = time.time()
-        
-        # 模拟三种推理路径
-        reasoning_paths = ['symbolic', 'neuroSymbolic', 'learnedDependentTypes']
+
+        # 选择推理路径
         selected_path = self._select_reasoning_path(documents, question)
-        
+
         # 模拟推理过程
         answer = self._generate_answer(documents, question, selected_path)
-        
+
         elapsed_time = time.time() - start_time
-        
+
         return {
             'answer': answer,
             'confidence': 0.85,
@@ -46,14 +46,17 @@ class MockAgent:
                 'output': len(answer)
             }
         }
-    
-    def _select_reasoning_path(self, documents, question):
+
+    def _select_reasoning_path(self, documents: list[str], question: str) -> str:
         """选择推理路径"""
-        import random
+        _ = documents  # 用于未来扩展
+        _ = question   # 用于未来扩展
         return random.choice(['symbolic', 'neuroSymbolic', 'learnedDependentTypes'])
-    
-    def _generate_answer(self, documents, question, path):
+
+    def _generate_answer(self, documents: list[str], question: str, path: str) -> str:
         """生成答案（模拟）"""
+        _ = documents  # 用于未来扩展
+        _ = path       # 用于未来扩展
         # 简单模拟：基于问题生成相关回答
         answers = [
             f"基于文档分析，{question}的答案是肯定的。",
@@ -61,7 +64,6 @@ class MockAgent:
             f"经过综合推理，关于{question}，文档中明确指出...",
             f"对{question}的回答需要考虑文档A和文档B的关联...",
         ]
-        import random
         return random.choice(answers)
 
 
@@ -70,7 +72,7 @@ agent = MockAgent()
 
 
 @app.route('/health', methods=['GET'])
-def health():
+def health() -> Response:
     """健康检查"""
     return jsonify({
         'status': 'healthy',
@@ -80,26 +82,34 @@ def health():
 
 
 @app.route('/api/chat', methods=['POST'])
-def chat():
+def chat() -> Response | tuple[Response, int]:
     """处理推理请求"""
     try:
-        data = request.json
-        documents = data.get('documents', [])
-        question = data.get('question', '')
-        
+        req_json: dict[str, object] | None = request.get_json()
+        if not req_json:
+            return jsonify({'success': False, 'error': 'Invalid JSON'}), 400
+
+        documents = req_json.get('documents', [])
+        question = req_json.get('question', '')
+
+        if not isinstance(documents, list):
+            documents = []
+        if not isinstance(question, str):
+            question = str(question) if question else ''
+
         if not question:
             return jsonify({
                 'error': 'Question is required'
             }), 400
-        
+
         # 调用Agent
         result = agent.process_with_logic(documents, question)
-        
+
         return jsonify({
             'success': True,
             'data': result
         })
-        
+
     except Exception as e:
         return jsonify({
             'success': False,
@@ -108,30 +118,37 @@ def chat():
 
 
 @app.route('/api/evaluate', methods=['POST'])
-def evaluate():
+def evaluate() -> Response | tuple[Response, int]:
     """评测接口（适配EvalScope格式）"""
     try:
-        data = request.json
-        
+        req_json: dict[str, object] | None = request.get_json()
+        if not req_json:
+            return jsonify({'error': 'Invalid JSON'}), 400
+
         # Extract question and documents
-        question = data.get('question') or data.get('prompt', '')
-        documents = data.get('documents', data.get('context', []))
-        
+        question = req_json.get('question') or req_json.get('prompt', '')
+        documents = req_json.get('documents', req_json.get('context', []))
+
+        if not isinstance(question, str):
+            question = str(question) if question else ''
+        if not isinstance(documents, list):
+            documents = []
+
         if not question:
             return jsonify({
                 'error': 'Question is required'
             }), 400
-        
+
         # Call agent
         result = agent.process_with_logic(documents, question)
-        
+
         return jsonify({
             'answer': result['answer'],
             'confidence': result['confidence'],
             'reasoning_path': result['reasoning_path'],
             'reasoning_time': result['reasoning_time']
         })
-        
+
     except Exception as e:
         return jsonify({
             'error': str(e)
@@ -151,5 +168,5 @@ if __name__ == '__main__':
     print("  POST /api/chat - Chat interface")
     print("  POST /api/evaluate - Evaluation interface")
     print("=" * 50)
-    
-    app.run(host='0.0.0.0', port=8000, debug=False)
+
+    app.run(host='0.0.0.0', port=8000, debug=False)  # type: ignore[arg-type]

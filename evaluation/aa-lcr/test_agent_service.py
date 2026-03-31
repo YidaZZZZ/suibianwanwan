@@ -1,13 +1,12 @@
 """测试agent_service的各个接口"""
 import requests
-import time
 import sys
 
-def test_health():
+def test_health() -> bool:
     """测试健康检查接口"""
     print("[1/3] Testing /health endpoint...")
     try:
-        response = requests.get('http://localhost:8000/health')
+        response = requests.get('http://localhost:8000/health', timeout=5)
         print(f"      Status: {response.status_code}")
         print(f"      Response: {response.json()}")
         return True
@@ -15,7 +14,7 @@ def test_health():
         print(f"      ERROR: {e}")
         return False
 
-def test_chat():
+def test_chat() -> bool:
     """测试聊天接口"""
     print("\n[2/3] Testing /api/chat endpoint...")
     try:
@@ -24,12 +23,13 @@ def test_chat():
             json={
                 'question': 'What is the main topic of the documents?',
                 'documents': ['Document A: Introduction to AI', 'Document B: Machine Learning Basics']
-            }
+            },
+            timeout=30
         )
         print(f"      Status: {response.status_code}")
         data = response.json()
         print(f"      Success: {data.get('success')}")
-        if data.get('success'):
+        if data.get('success') and isinstance(data.get('data'), dict):
             print(f"      Reasoning path: {data['data']['reasoning_path']}")
             print(f"      Confidence: {data['data']['confidence']}")
             print(f"      Time: {data['data']['reasoning_time']:.2f}s")
@@ -38,7 +38,7 @@ def test_chat():
         print(f"      ERROR: {e}")
         return False
 
-def test_evaluate():
+def test_evaluate() -> bool:
     """测试评测接口"""
     print("\n[3/3] Testing /api/evaluate endpoint...")
     try:
@@ -47,18 +47,20 @@ def test_evaluate():
             json={
                 'question': 'Summarize the key findings.',
                 'context': ['Research paper on neural networks', 'Experimental results']
-            }
+            },
+            timeout=30
         )
         print(f"      Status: {response.status_code}")
         data = response.json()
-        print(f"      Answer: {data.get('answer', 'N/A')[:50]}...")
+        answer = data.get('answer', 'N/A')
+        print(f"      Answer: {str(answer)[:50]}...")
         print(f"      Confidence: {data.get('confidence', 'N/A')}")
         return True
     except Exception as e:
         print(f"      ERROR: {e}")
         return False
 
-def main():
+def main() -> int:
     print("=" * 70)
     print("Agent Service Test")
     print("=" * 70)
