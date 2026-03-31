@@ -39,6 +39,9 @@ out/
 *.temp
 .cache/
 
+# CodeBuddy
+.codebuddy/
+
 # Agent configs (optional - uncomment if you want to ignore project-specific configs)
 # agent-config.json
 
@@ -48,4 +51,4 @@ out/
 # Chat logs
 logs/chats/*.txt
 logs/chats/*.log
-logs/chats/important/*
+# logs/chats/important/
