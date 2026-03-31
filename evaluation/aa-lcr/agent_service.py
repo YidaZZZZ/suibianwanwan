@@ -4,10 +4,16 @@ Agent服务封装
 """
 
 from flask import Flask, request, jsonify, Response
+from werkzeug import Request as WerkzeugRequest
 import time
 import sys
 import os
 import random
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    # 类型检查时的导入
+    pass
 
 # 添加agent-config到路径
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../agent-config'))
@@ -24,7 +30,11 @@ class MockAgent:
             'max_retries': 3
         }
 
-    def process_with_logic(self, documents: list[str], question: str) -> dict[str, str | float | dict[str, int]]:
+    def process_with_logic(
+        self,
+        documents: list[str],
+        question: str
+    ) -> dict[str, str | float | dict[str, int]]:
         """处理带逻辑推理的查询"""
         start_time = time.time()
 
@@ -47,13 +57,22 @@ class MockAgent:
             }
         }
 
-    def _select_reasoning_path(self, documents: list[str], question: str) -> str:
+    def _select_reasoning_path(
+        self,
+        documents: list[str],
+        question: str
+    ) -> str:
         """选择推理路径"""
         _ = documents  # 用于未来扩展
         _ = question   # 用于未来扩展
         return random.choice(['symbolic', 'neuroSymbolic', 'learnedDependentTypes'])
 
-    def _generate_answer(self, documents: list[str], question: str, path: str) -> str:
+    def _generate_answer(
+        self,
+        documents: list[str],
+        question: str,
+        path: str
+    ) -> str:
         """生成答案（模拟）"""
         _ = documents  # 用于未来扩展
         _ = path       # 用于未来扩展
@@ -87,7 +106,7 @@ def chat() -> Response | tuple[Response, int]:
     try:
         req_json: dict[str, object] | None = request.get_json()
         if not req_json:
-            return jsonify({'success': False, 'error': 'Invalid JSON'}), 400
+            return jsonify({'success': False, 'error': 'Invalid JSON'}), 400  # type: ignore[misc]
 
         documents = req_json.get('documents', [])
         question = req_json.get('question', '')
@@ -100,7 +119,7 @@ def chat() -> Response | tuple[Response, int]:
         if not question:
             return jsonify({
                 'error': 'Question is required'
-            }), 400
+            }), 400  # type: ignore[misc]
 
         # 调用Agent
         result = agent.process_with_logic(documents, question)
@@ -114,7 +133,7 @@ def chat() -> Response | tuple[Response, int]:
         return jsonify({
             'success': False,
             'error': str(e)
-        }), 500
+        }), 500  # type: ignore[misc]
 
 
 @app.route('/api/evaluate', methods=['POST'])
@@ -123,7 +142,7 @@ def evaluate() -> Response | tuple[Response, int]:
     try:
         req_json: dict[str, object] | None = request.get_json()
         if not req_json:
-            return jsonify({'error': 'Invalid JSON'}), 400
+            return jsonify({'error': 'Invalid JSON'}), 400  # type: ignore[misc]
 
         # Extract question and documents
         question = req_json.get('question') or req_json.get('prompt', '')
@@ -137,7 +156,7 @@ def evaluate() -> Response | tuple[Response, int]:
         if not question:
             return jsonify({
                 'error': 'Question is required'
-            }), 400
+            }), 400  # type: ignore[misc]
 
         # Call agent
         result = agent.process_with_logic(documents, question)
@@ -152,7 +171,7 @@ def evaluate() -> Response | tuple[Response, int]:
     except Exception as e:
         return jsonify({
             'error': str(e)
-        }), 500
+        }), 500  # type: ignore[misc]
 
 
 if __name__ == '__main__':
