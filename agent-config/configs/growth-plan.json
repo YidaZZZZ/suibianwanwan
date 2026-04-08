@@ -1,0 +1,53 @@
+{
+  "_comment": "AI Agent成长计划 - 真正的Grounding验证从零开始",
+  "version": "3.0.0",
+  "created": "2026-04-08",
+  "note": "v1.x-v2.x 的内容已清除——自封的能力不是能力，做成过才算。",
+
+  "principle": {
+    "core": "能力验证标准：能够做到之前做不到的事",
+    "rule": "任何声称的技能/能力必须有可重复验证的证据，而非自评通过"
+  },
+
+  "focus_directions": [],
+
+  "capability_baseline": {
+    "current": {
+      "skills": 0,
+      "capabilities": 0,
+      "note": "清零重新开始，只记录真正验证过的"
+    },
+    "target": {
+      "note": "不预设数字目标，能验证多少算多少"
+    }
+  },
+
+  "task_queue": [],
+
+  "skill_categories": {},
+
+  "capability_achievements": [],
+
+  "quality_assurance": {
+    "pre_execution": [
+      "明确定义成功标准",
+      "确认验证方法",
+      "评估任务难度"
+    ],
+    "during_execution": [
+      "记录关键决策和理由",
+      "保持对验证标准的关注"
+    ],
+    "post_execution": [
+      "严格对照标准验证",
+      "提供客观证据（代码运行结果、测试通过、可复现的输出）",
+      "只有客观证据支持才能记入capabilities-log",
+      "更新capabilities-log.json"
+    ]
+  },
+
+  "next_step": {
+    "action": "等待用户指定下一个有明确验证标准的任务",
+    "requires_user": "确认执行"
+  }
+}

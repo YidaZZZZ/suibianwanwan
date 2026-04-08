@@ -1,0 +1,17 @@
+{
+  "_comment": "能力日志 - 记录验证成功的能力和技能沉淀",
+  "version": "2.0.0",
+  "created": "2026-04-08",
+  "last_updated": "2026-04-08",
+  "note": "v1.x 的9个技能和2个能力已清除——它们未经真正的Grounding验证，是点子伪装成技能。能力必须'做到之前做不到的事'才算。",
+  "current_state": {
+    "skills_count": 0,
+    "capabilities_count": 0,
+    "capability_achievements": [],
+    "focus_directions": [
+      "尚未建立任何经过验证的能力"
+    ]
+  },
+  "skills": [],
+  "capabilities": []
+}

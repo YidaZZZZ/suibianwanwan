@@ -8,10 +8,9 @@ export { AgentInitializer, agentInitializer } from './AgentInitializer.js';
 /**
  * 快速初始化Agent
  */
-export function quickInitAgent(path) {
-  const { agentInitializer } = require('./AgentInitializer.js');
+export async function quickInitAgent(path) {
+  const { agentInitializer } = await import('./AgentInitializer.js');
 
-  // 判断是项目还是对话
   if (path.includes('projects')) {
     const agentData = agentInitializer.initializeProjectAgent(path);
     return agentInitializer.createAgentInstance(agentData);
@@ -26,15 +25,15 @@ export function quickInitAgent(path) {
 /**
  * 获取配置
  */
-export function getAgentConfig(path) {
-  const { configLoader } = require('./AgentConfigLoader.js');
-  return configLoader.getAllConfigs(path);
+export async function getAgentConfig(path) {
+  const { configLoader } = await import('./AgentConfigLoader.js');
+  return configLoader.getAllConfigs();
 }
 
 /**
  * 验证配置
  */
-export function validateAgentConfig(config) {
-  const { configLoader } = require('./AgentConfigLoader.js');
+export async function validateAgentConfig(config) {
+  const { configLoader } = await import('./AgentConfigLoader.js');
   return configLoader.validateConfig(config);
 }

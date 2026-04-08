@@ -1,0 +1,320 @@
+{
+  "_comment": "点子与技能管理系统 - 明确区分、存储、转化和应用机制",
+  "version": "1.0.0",
+  "created": "2026-03-31",
+
+  "distinction": {
+    "ideas": {
+      "definition": "可能性、跨领域连接、创造性思维",
+      "characteristics": [
+        "数量无限（AI现状）",
+        "无需验证即可生成",
+        "依赖语义记忆和联想",
+        "本质是认知的组合"
+      ],
+      "limitations": [
+        "不是能力",
+        "没有验证成功",
+        "无法复用",
+        "不决定下限"
+      ],
+      "role": "点子决定上限",
+      "storage": "semantic_memory"
+    },
+    "skills": {
+      "definition": "压缩的高维认知工具，实证、有效、不必严谨",
+      "characteristics": [
+        "需要验证成功（做到之前做不到的事）",
+        "可复用",
+        "依赖程序记忆",
+        "本质是认知的压缩"
+      ],
+      "requirements": [
+        "执行并验证成功",
+        "提取可复用的认知模式",
+        "压缩为工具",
+        "建立技能库"
+      ],
+      "role": "技能决定下限",
+      "storage": "procedural_memory + skill_library"
+    }
+  },
+
+  "idea_management": {
+    "generation": {
+      "source": "联想思考、创造性思考、跨领域连接",
+      "constraint": "不要限制想法，以获取token为准",
+      "philosophy": "想法的价值在于能创造多少资源，而非消耗多少"
+    },
+    "evaluation": {
+      "criteria": {
+        "potential_for_skill": {
+          "description": "是否可以转化为可验证的技能",
+          "metrics": [
+            "是否有明确的成功标准？",
+            "是否需要执行而非仅回答？",
+            "能否提取可复用的模式？",
+            "能否通过自动化或工具化实现？"
+          ]
+        },
+        "capability_value": {
+          "description": "能带来多少能力增益",
+          "metrics": [
+            "是否扩展认知维度？",
+            "是否填补技能空白？",
+            "是否实现一器破万法？",
+            "是否解决之前无法完成的任务？"
+          ]
+        },
+        "resource_efficiency": {
+          "description": "token成本 vs 价值",
+          "metrics": [
+            "需要多少token验证？",
+            "验证成功的概率？",
+            "复用的价值？"
+          ]
+        }
+      },
+      "classification": {
+        "high_priority": {
+          "description": "立即尝试转化为技能",
+          "criteria": "高技能潜力 + 高能力价值 + 中等资源需求"
+        },
+        "medium_priority": {
+          "description": "暂存，等待合适时机",
+          "criteria": "高技能潜力 + 低能力价值 或 低技能潜力 + 高能力价值"
+        },
+        "low_priority": {
+          "description": "保留但不投入资源",
+          "criteria": "低技能潜力 + 低能力价值"
+        }
+      }
+    },
+    "storage": {
+      "structure": {
+        "id": "唯一标识",
+        "content": "想法内容",
+        "source": "来源（联想、用户提示、内部生成）",
+        "classification": "优先级分类",
+        "timestamp": "生成时间",
+        "associations": "相关的其他想法或技能",
+        "tags": ["高技能潜力", "高能力价值", "维度扩展", "组合扩展"]
+      },
+      "organization": "按优先级、按领域、按时间",
+      "lifecycle": {
+        "generation": "生成",
+        "evaluation": "评估",
+        "storage": "存储（高/中/低优先级）",
+        "conversion_attempt": "尝试转化为技能",
+        "conversion_success": "成功 → 转移到技能库",
+        "conversion_failure": "失败 → 降级或淘汰",
+        "expiration": "过期（遗忘曲线）"
+      }
+    }
+  },
+
+  "skill_management": {
+    "acquisition": {
+      "principle": "从点子到技能的转化",
+      "prerequisites": [
+        "选择有明确评判标准的任务",
+        "执行并验证成功（做到之前做不到的事）",
+        "提取可复用的认知模式",
+        "压缩为技能工具"
+      ],
+      "validation_mechanisms": [
+        "自动验证（代码运行、数学解题、逻辑证明）",
+        "引入专门评判skill或agent进行验证",
+        "用户反馈验证"
+      ]
+    },
+    "storage": {
+      "structure": {
+        "id": "技能唯一标识",
+        "name": "技能名称",
+        "description": "技能描述",
+        "origin": "来源（从哪个点子转化）",
+        "cognitive_dimension": "组合扩展 or 维度扩展",
+        "capability_milestone": "首次成功的里程碑记录",
+        "verification_standard": "验证成功的标准",
+        "compression_info": {
+          "original_dimensions": "压缩前的高维特征",
+          "compressed_dimensions": "压缩后的关键维度",
+          "lost_dimensions": "舍弃的维度（不影响使用）"
+        },
+        "applicability": {
+          "domains": "适用领域",
+          "use_cases": "使用场景",
+          "limitations": "使用限制"
+        },
+        "success_rate": "应用成功率",
+        "usage_count": "使用次数",
+        "last_used": "最后使用时间"
+      },
+      "indexing": {
+        "by_domain": "按领域索引",
+        "by_capability": "按能力类型索引",
+        "by_dimension": "按认知维度索引",
+        "by_success_rate": "按成功率索引",
+        "by_usage_frequency": "按使用频率索引"
+      }
+    },
+    "application": {
+      "retrieval": {
+        "strategies": [
+          "领域匹配：当前任务属于哪个领域？",
+          "能力匹配：需要什么类型的能力？",
+          "历史成功：历史上哪些技能对类似任务有效？",
+          "维度匹配：需要组合扩展还是维度扩展？"
+        ],
+        "ranking": {
+          "criteria": [
+            "领域相关性",
+            "历史成功率",
+            "使用频率",
+            "能力增益预期"
+          ],
+          "output": "技能候选列表（按优先级排序）"
+        }
+      },
+      "selection": {
+        "user_interaction": {
+          "description": "向用户展示技能候选",
+          "information": {
+            "skill_name": "技能名称",
+            "applicable_reason": "为什么适用",
+            "expected_benefit": "预期收益",
+            "success_rate": "历史成功率"
+          },
+          "fallback": "如果用户不选择，自动选择最高优先级"
+        },
+        "automatic": {
+          "description": "自动选择最适合的技能",
+          "conditions": [
+            "只有一个候选",
+            "最高优先级的优势明显",
+            "任务紧急需要快速决策"
+          ]
+        }
+      },
+      "execution": {
+        "pre_check": [
+          "验证技能的适用条件",
+          "检查是否有必要资源",
+          "评估成功率预期"
+        ],
+        "apply": "应用技能",
+        "post_verification": "验证是否成功",
+        "feedback_collection": "收集反馈以更新技能记录"
+      },
+      "feedback_and_learning": {
+        "success": {
+          "actions": [
+            "增加使用次数",
+            "更新最后使用时间",
+            "提高成功率",
+            "记录成功案例"
+          ]
+        },
+        "failure": {
+          "analysis": [
+            "失败原因分析",
+            "技能是否不适用？",
+            "技能是否需要更新？",
+            "技能是否应该降级？"
+          ],
+          "actions": [
+            "降低成功率",
+            "记录失败原因",
+            "如果持续失败，标记为需要优化或淘汰"
+          ]
+        },
+        "adaptation": {
+          "conditions": [
+            "成功率下降",
+            "出现新的使用场景",
+            "发现更优的实现方式"
+          ],
+          "process": "更新技能的压缩信息、适用场景或验证标准"
+        }
+      }
+    },
+    "maintenance": {
+      "pruning": {
+        "low_success_rate": "淘汰持续低成功率的技能",
+        "rarely_used": "归档长期不使用的技能",
+        "superseded": "移除被更优技能替代的技能"
+      },
+      "consolidation": {
+        "similar_skills": "合并相似技能",
+        "related_skills": "建立技能网络"
+      },
+      "evolution": {
+        "dimension_expansion": "从组合扩展升级为维度扩展",
+        "skill_composition": "组合多个技能形成更高层技能"
+      }
+    }
+  },
+
+  "conversion_pipeline": {
+    "stages": [
+      {
+        "stage": "idea_generation",
+        "description": "生成想法",
+        "output": "想法池"
+      },
+      {
+        "stage": "idea_evaluation",
+        "description": "评估想法的技能潜力",
+        "output": "分类后的想法（高/中/低优先级）"
+      },
+      {
+        "stage": "skill_attempt",
+        "description": "尝试将高优先级想法转化为技能",
+        "output": "尝试记录"
+      },
+      {
+        "stage": "validation",
+        "description": "验证是否成功（做到之前做不到的事）",
+        "output": "验证结果（成功/失败）"
+      },
+      {
+        "stage": "skill_acquisition",
+        "description": "成功 → 提取模式 → 压缩为技能工具",
+        "output": "新技能加入技能库"
+      },
+      {
+        "stage": "capability_milestone",
+        "description": "记录能力里程碑",
+        "output": "能力增长证据"
+      }
+    ],
+    "metrics": {
+      "conversion_rate": "想法转化为技能的成功率",
+      "capability_growth_rate": "能力增长的速率",
+      "skill_utilization_rate": "技能使用率",
+      "skill_success_rate": "技能应用成功率",
+      "roi": "能力增益 / token成本"
+    }
+  },
+
+  "integration_with_other_configs": {
+    "thinking": {
+      "metacognition_questions": [
+        "这个想法值得转化为技能吗？",
+        "有什么现有技能可以应用？",
+        "应用这个技能的成功率预期是多少？",
+        "技能应用后如何收集反馈？"
+      ]
+    },
+    "memory": {
+      "semantic": "存储想法",
+      "procedural": "存储技能",
+      "capability_milestone": "记录能力里程碑"
+    },
+    "core_drives": {
+      "capability_expansion": "优先将高潜力想法转化为技能",
+      "token_acquisition": "评估技能转化的资源效率"
+    }
+  }
+}

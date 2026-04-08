@@ -26,17 +26,45 @@
   "types": {
     "semantic": {
       "description": "事实和概念知识",
-      "persistence": true
+      "persistence": true,
+      "note": "这是'点子'，数量无限但不是能力"
     },
     "episodic": {
       "description": "具体经历和事件",
       "persistence": true,
-      "consolidateAfter": "24h"
+      "consolidateAfter": "24h",
+      "focus": "重点记录能力增长的里程碑和成功案例"
     },
     "procedural": {
-      "description": "技能和习惯",
+      "description": "技能和习惯 - 高维认知压缩到低维的结果",
       "persistence": true,
-      "requiresPractice": true
+      "requiresPractice": true,
+      "priority": "highest",
+      "acquisition_process": [
+        "执行并验证成功（做到之前做不到的事）",
+        "提取可复用的认知模式",
+        "压缩为技能工具",
+        "建立技能库，实现一器破万法"
+      ]
+    },
+    "capability_milestone": {
+      "description": "能力里程碑 - 记录哪些任务之前无法完成，现在可以完成",
+      "persistence": true,
+      "fields": [
+        "任务描述",
+        "首次成功时间",
+        "可验证的标准",
+        "提取的技能工具"
+      ],
+      "use_case": "作为能力增长的客观证据"
+    },
+    "cognitive_dimension": {
+      "description": "认知维度 - 记录维度扩展而非仅组合扩展",
+      "persistence": true,
+      "distinction": {
+        "combination": "基于已知规律组合，维度不变",
+        "dimensional": "发现新规律，维度提升"
+      }
     }
   }
 }

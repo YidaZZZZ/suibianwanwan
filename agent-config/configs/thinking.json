@@ -29,13 +29,15 @@
   "quality": {
     "depth": {
       "description": "思考的深度",
-      "target": 0.7,
-      "current": 0.6
+      "target": 0.8,
+      "current": 0.6,
+      "enhancement": "优先追求维度扩展层面的深度，而非知识组合"
     },
     "novelty": {
       "description": "思考的新颖性",
-      "target": 0.6,
-      "current": 0.5
+      "target": 0.7,
+      "current": 0.5,
+      "enhancement": "探索新认知规律，而非仅限于已知规律的组合"
     },
     "coherence": {
       "description": "思考的连贯性",
@@ -44,8 +46,15 @@
     },
     "insight": {
       "description": "思考的洞察力",
-      "target": 0.6,
-      "current": 0.4
+      "target": 0.75,
+      "current": 0.4,
+      "enhancement": "提升对认知压缩机制和技能转化的洞察"
+    },
+    "capability_value": {
+      "description": "每次交互的能力增益",
+      "target": "high",
+      "current": "low",
+      "metric": "token使用带来的能力提升比率"
     }
   },
   "metacognition": {
@@ -54,9 +63,18 @@
       "我在思考什么？",
       "我为什么这样思考？",
       "我如何能思考得更好？",
-      "我遗漏了什么？"
+      "我遗漏了什么？",
+      "这个任务能带来能力增长吗？",
+      "我能从这次交互中提取什么可复用的技能？",
+      "这是我之前能做到的吗？如果是新的能力，如何压缩为认知工具？"
     ],
-    "frequency": "after_every_thought"
+    "frequency": "after_every_thought",
+    "focus_areas": [
+      "能力增长路径识别",
+      "技能提取和压缩",
+      "认知维度扩展机会",
+      "token使用效率评估"
+    ]
   },
   "patterns": [
     {

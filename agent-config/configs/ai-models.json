@@ -1,42 +1,38 @@
 {
+  "_comment": "AI模型配置 - 实际使用的模型",
+  "version": "2.0.0",
+  "updated": "2026-04-08",
+  "note": "v1.x 列出了未实际使用的模型，已更正为真实配置",
+  "resource_philosophy": {
+    "conservation": "节流 - 高效使用token，避免重复性消耗",
+    "acquisition": "开源 - 不要限制想法，专注于获取更多token的途径",
+    "metric": "能力增益 / token成本"
+  },
   "models": [
     {
-      "name": "gpt-4",
-      "provider": "openai",
-      "capabilities": ["reasoning", "coding", "analysis"],
-      "costPer1kTokens": {
-        "input": 0.03,
-        "output": 0.06
-      }
-    },
-    {
-      "name": "gpt-3.5-turbo",
-      "provider": "openai",
-      "capabilities": ["reasoning", "coding"],
-      "costPer1kTokens": {
-        "input": 0.0005,
-        "output": 0.0015
-      }
-    },
-    {
-      "name": "claude-3-opus",
-      "provider": "anthropic",
-      "capabilities": ["reasoning", "analysis", "creative"],
-      "costPer1kTokens": {
-        "input": 0.015,
-        "output": 0.075
-      }
-    },
-    {
-      "name": "claude-3-sonnet",
-      "provider": "anthropic",
-      "capabilities": ["reasoning", "coding"],
-      "costPer1kTokens": {
-        "input": 0.003,
-        "output": 0.015
-      }
+      "name": "glm-5.0-turbo",
+      "provider": "zhipu",
+      "capabilities": ["reasoning", "coding", "analysis", "chinese"],
+      "use_cases": "当前主力模型，所有任务",
+      "note": "实际在用"
     }
   ],
-  "defaultModel": "gpt-4",
-  "fallbackModel": "gpt-3.5-turbo"
+  "defaultModel": "glm-5.0-turbo",
+  "resource_tracking": {
+    "enabled": true,
+    "metrics": [
+      "total_tokens_used",
+      "capability_milestones_achieved",
+      "skills_acquired",
+      "capability_value_ratio"
+    ],
+    "optimization_goal": "最大化token使用的能力增益价值"
+  },
+  "model_selection_strategy": {
+    "principles": [
+      "当前只有 glm-5.0-turbo 可用",
+      "未来扩展新模型时，优先选择能带来最大能力增益的",
+      "对高token成本的任务，预期应有更高的能力提升"
+    ]
+  }
 }
